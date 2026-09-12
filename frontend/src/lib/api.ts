@@ -110,6 +110,7 @@ export const api = {
   getCrimeRings: () =>
     fetchAPI<CrimeRingsResponse>("/api/crime-rings/list", undefined, {
       total_rings: fallbackGangs.total_gangs,
+      priority_ring: fallbackGangs.gangs.length > 0 ? fallbackGangs.gangs[0].gang_id : "RING-01",
       rings: fallbackGangs.gangs.map(g => ({
         syndicate_id: g.gang_id,
         ring_leader: g.ring_leader,
