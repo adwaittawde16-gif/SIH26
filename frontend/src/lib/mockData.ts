@@ -633,3 +633,212 @@ export const fallbackCriminalSummary: import("../types").CriminalHistorySummaryR
 };
 
 
+
+
+// Fallback dynamic CDR comparison
+export function generateFallbackCDRComparison(suspectA: string, suspectB: string) {
+  const seed = (suspectA.length * 7 + suspectB.length * 13) % 100;
+  const totalDirect = ((seed % 15) + 3);
+  const totalDuration = totalDirect * 4 + ((seed % 20) + 5);
+  const nocturnalCount = Math.floor(totalDirect * 0.4);
+  const sharedContactCount = ((seed % 4) + 2);
+
+  const sharedIntermediaries = [
+    {
+      intermediary_name: "Md. Vedant Padmanabhan",
+      phone_number: "+91-2530358841",
+      threat_score: 84.1,
+      calls_with_a: 24,
+      calls_with_b: 18,
+      last_activity: "2026-03-14 23:45:10"
+    },
+    {
+      intermediary_name: "Md. Pranit Arya",
+      phone_number: "+91-7774789752",
+      threat_score: 79.6,
+      calls_with_a: 16,
+      calls_with_b: 12,
+      last_activity: "2026-03-12 02:15:40"
+    },
+    {
+      intermediary_name: "Md. Hardik Kant",
+      phone_number: "+91-8482336846",
+      threat_score: 73.4,
+      calls_with_a: 9,
+      calls_with_b: 14,
+      last_activity: "2026-03-10 01:20:05"
+    }
+  ].slice(0, sharedContactCount);
+
+  return {
+    suspect_a: {
+      name: suspectA || "Md. Ranbir Bhalla",
+      phone: "+91-2236381844",
+      total_calls: 340,
+      unique_contacts: 28,
+      nocturnal_ratio: 0.38,
+      threat_score: 94.2
+    },
+    suspect_b: {
+      name: suspectB || "Md. Teerth Bhargava",
+      phone: "+91-7611970993",
+      total_calls: 290,
+      unique_contacts: 24,
+      nocturnal_ratio: 0.32,
+      threat_score: 88.5
+    },
+    direct_link: {
+      connected: totalDirect > 0,
+      total_calls: totalDirect,
+      total_duration_min: totalDuration,
+      nocturnal_calls: nocturnalCount,
+      first_contact: "2026-01-15 14:22:10",
+      last_contact: "2026-03-15 01:45:22",
+      primary_cell_tower: "MH-TOWER-BYCULLA-04"
+    },
+    shared_intermediaries: sharedIntermediaries,
+    exclusive_contacts_a: [
+      { name: "Suresh Hawala", phone: "+91-9820011223", calls: 19, role: "Financial Courier" },
+      { name: "Dongri Scrap Godown", phone: "+91-9821144556", calls: 14, role: "Logistics" }
+    ],
+    exclusive_contacts_b: [
+      { name: "Goa Dead-Drop Courier", phone: "+91-9833322114", calls: 22, role: "Narcotics Supply" },
+      { name: "Opera House Angadia", phone: "+91-9876543210", calls: 16, role: "Cash Transit" }
+    ],
+    network_overlap_pct: Math.min(85, Math.round(20 + seed * 0.6)),
+    syndicate_coordination_risk: totalDirect > 8 ? "CRITICAL" : "HIGH",
+    tactical_summary: `Pairwise analysis confirms active coordination between ${suspectA || "Suspect A"} and ${suspectB || "Suspect B"} with ${totalDirect} direct calls and ${sharedContactCount} verified shared operational intermediaries.`
+  };
+}
+
+export const fallbackFinancialGraph = {
+  total_nodes: 18,
+  total_edges: 26,
+  nodes: [
+    { id: "Md. Ranbir Bhalla", label: "Md. Ranbir Bhalla", category: "SUSPECT", threat_score: 94.2, total_volume: 85000000 },
+    { id: "Md. Gagan Rao", label: "Md. Gagan Rao (Hawala)", category: "HAWALA_OPERATOR", threat_score: 89.0, total_volume: 142000000 },
+    { id: "Apex Horizon Trading LLP", label: "Apex Horizon Trading LLP", category: "SHELL_COMPANY", threat_score: 92.5, total_volume: 68000000 },
+    { id: "BlueSea Marine Logistics Pvt Ltd", label: "BlueSea Marine Logistics Pvt Ltd", category: "SHELL_COMPANY", threat_score: 88.0, total_volume: 52000000 },
+    { id: "Zaveri Bullion Angadia Hub", label: "Zaveri Bullion Angadia Hub", category: "ANGADIA_CONDUIT", threat_score: 95.0, total_volume: 210000000 }
+  ],
+  edges: [
+    { source: "Md. Ranbir Bhalla", target: "Apex Horizon Trading LLP", amount: 45000000, transaction_count: 14, type: "SHELL_INJECTION" },
+    { source: "Apex Horizon Trading LLP", target: "Md. Gagan Rao", amount: 42000000, transaction_count: 11, type: "HAWALA_CONVERSION" },
+    { source: "Md. Gagan Rao", target: "Zaveri Bullion Angadia Hub", amount: 120000000, transaction_count: 28, type: "CASH_SETTLEMENT" }
+  ]
+};
+
+export const fallbackLaunderingPatterns = {
+  patterns: [
+    {
+      pattern_id: "PAT-PMLA-01",
+      pattern_type: "Circular Round-Tripping (Layering)",
+      confidence_score: 0.94,
+      involved_entities: ["Md. Ranbir Bhalla", "Apex Horizon Trading LLP", "BlueSea Marine Logistics Pvt Ltd"],
+      total_flow_amount: 92000000,
+      description: "Automated cyclic fund transfer across 4 shell LLPs with zero commercial goods movement within a 48-hour settlement window."
+    },
+    {
+      pattern_id: "PAT-PMLA-02",
+      pattern_type: "Smurfing / Structured UPI Mule Deposits",
+      confidence_score: 0.88,
+      involved_entities: ["Md. Nihal Rana", "Student Mule Account Pool #4"],
+      total_flow_amount: 34500000,
+      description: "High-frequency micro-deposits (< INR 50,000) structured to evade FIU-IND CTR triggers, instantly swept into offshore crypto OTC desks."
+    }
+  ],
+  total_flagged_volume: 126500000,
+  high_risk_clusters_count: 5
+};
+
+export const fallbackFinancialCentrality = {
+  top_volume_entities: [
+    { entity_name: "Zaveri Bullion Angadia Hub", volume_inr: 210000000, category: "ANGADIA_CONDUIT" },
+    { entity_name: "Md. Gagan Rao", volume_inr: 142000000, category: "HAWALA_OPERATOR" },
+    { entity_name: "Md. Ranbir Bhalla", volume_inr: 85000000, category: "SUSPECT" }
+  ],
+  top_hub_entities: [
+    { entity_name: "Md. Gagan Rao", in_degree: 18, out_degree: 22, total_degree: 40 },
+    { entity_name: "Apex Horizon Trading LLP", in_degree: 12, out_degree: 14, total_degree: 26 }
+  ]
+};
+
+export const fallbackPMLADossier = {
+  entity_id: "ENT-PMLA-001",
+  entity_name: "Md. Ranbir Bhalla / Apex Horizon Trading LLP",
+  pmla_sections_invoked: ["PMLA 2002 Sec 3", "PMLA 2002 Sec 4", "IPC 120B", "IPC 420"],
+  total_tainted_assets_inr: 85000000,
+  attached_properties_count: 3,
+  provisional_attachment_order: "PAO-ED-WZ-2026/041",
+  bank_accounts_frozen: 8,
+  shell_companies_linked: 4,
+  adjudicating_authority_status: "Provisional Attachment Confirmed by PMLA Appellate Tribunal"
+};
+
+export const fallbackCourtEvidenceCertificate = {
+  certificate_id: "CERT-65B-2026-089",
+  entity_id: "SUSPECT-MB-001",
+  entity_name: "Md. Ranbir Bhalla",
+  timestamp: "2026-03-16T12:00:00+05:30",
+  sha256_hash: "a4f8c1289de90382a87b64f912e7536d540212a4bb49e6f30a912634d588102a",
+  court_case_number: "Special MCOCA Case No. 42/2026",
+  issuing_authority: "Brihanmumbai Police Cyber & Financial Crime Forensic Unit",
+  issuance_date: "16-MAR-2026",
+  validity_period: "Perpetual / Admissible under Sec 65B Indian Evidence Act 1872 / BSA 2023 Sec 63",
+  evidence_summary: "Forensically validated CDR call logs, geo-cell tower triangulation, and PMLA financial money trail records hash-sealed with SHA-256 cryptographic proof.",
+  pg_number: 14,
+  digital_signature: "DIGISIGN-MH-POLICE-FORENSIC-KEY-0091"
+};
+
+export const fallbackFinancialEntities = {
+  total_entities: 48,
+  categories: {
+    SUSPECT: 10,
+    HAWALA_OPERATOR: 8,
+    SHELL_COMPANY: 16,
+    ANGADIA_CONDUIT: 6,
+    MULE_ACCOUNT: 8
+  },
+  all_entities: [
+    { entity_id: "E-01", entity_name: "Md. Ranbir Bhalla", category: "SUSPECT", threat_score: 94.2 },
+    { entity_id: "E-02", entity_name: "Md. Gagan Rao", category: "HAWALA_OPERATOR", threat_score: 89.0 },
+    { entity_id: "E-03", entity_name: "Apex Horizon Trading LLP", category: "SHELL_COMPANY", threat_score: 92.5 },
+    { entity_id: "E-04", entity_name: "Zaveri Bullion Angadia Hub", category: "ANGADIA_CONDUIT", threat_score: 95.0 }
+  ]
+};
+
+export const fallbackSuspiciousPatterns = {
+  patterns: [
+    {
+      type: "Coordinated Burner Activation",
+      risk_level: "HIGH" as const,
+      description: "Simultaneous 02:00 AM SIM activations across Byculla and Dongri towers matching known syndicate operational frequency.",
+      suspects: ["Md. Ranbir Bhalla", "Md. Teerth Bhargava"],
+      confidence: 0.92
+    },
+    {
+      type: "Border Area IMSI Catcher Evasion",
+      risk_level: "HIGH" as const,
+      description: "Rapid cell tower handoff sequence observed along Coastal Road corridor avoiding fixed surveillance beacons.",
+      suspects: ["Md. Pranit Arya"],
+      confidence: 0.87
+    }
+  ],
+  warnings: [
+    "High probability of synchronized off-grid communication detected during 00:00-04:00 window.",
+    "Encrypted VoIP relay proxy active across 3 identified IP ranges."
+  ],
+  analysis_timestamp: "2026-03-16T12:00:00+05:30"
+};
+
+export const fallbackIntelligenceInsights = {
+  executive_summary: "Automated multi-source intelligence fusion indicates elevated syndicate mobilization in Southern Mumbai. Cross-domain correlations confirm synchronization between nocturnal CDR spikes, cash mule layering, and optical CCTV matches near high-value commercial targets.",
+  top_critical_threats: fallbackLeaderboard.leaderboard.slice(0, 3),
+  active_syndicates_count: 3,
+  surveillance_hotspots: ["Byculla Station Road", "Dongri Market", "Zaveri Bazaar"],
+  recommended_actions: [
+    "Issue immediate Section 67 NDPS / Sec 50 PMLA summons to key shell LLP directors.",
+    "Place 24/7 tactical field spotters on identified nocturnal transit corridor MH-TOWER-BYCULLA-04.",
+    "Initiate freezing of 8 flagged mule accounts under PMLA Sec 17."
+  ]
+};
