@@ -225,8 +225,8 @@ export default function CommandCenterPage() {
                   {topSuspect.suspect_name}
                 </h2>
                 <p className="text-xs font-mono text-slate-300 mt-1">
-                  MSISDN: <span className="text-slate-100 font-bold">{topSuspect.phone_number}</span> · Composite Threat Score:{" "}
-                  <span className="text-red-400 font-bold">{topSuspect.total_threat_score.toFixed(1)}/100</span> (Rank #1)
+                  MSISDN: <span className="text-slate-100 font-bold">{topSuspect.phone_number || "N/A"}</span> · Composite Threat Score:{" "}
+                  <span className="text-red-400 font-bold">{(topSuspect.total_threat_score ?? 0).toFixed(1)}/100</span> (Rank #1)
                 </p>
               </div>
             </div>

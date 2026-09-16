@@ -55,12 +55,12 @@ export default function GangsPage() {
       setLoading(true);
       const res = await api.getGangs();
       setGangsData(res);
-      if (res.gangs.length > 0) {
+      if (res?.gangs && res.gangs.length > 0) {
         setSelectedGang(res.gangs[0]);
       }
     } catch (err: any) {
       setError(err.message || "Failed to load gang detection data");
-    } fontally: {
+    } finally {
       setLoading(false);
     }
   }

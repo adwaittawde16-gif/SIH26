@@ -43,11 +43,11 @@ export async function GET(
 
   return NextResponse.json(
     {
-      status: "DEMO_FALLBACK",
-      message: `Endpoint /api/${path} operating in offline demonstration mode.`,
+      error: "BACKEND_OFFLINE",
+      message: `Endpoint /api/${path} is offline. Using client data layer.`,
       path: path,
     },
-    { status: 200 }
+    { status: 503 }
   );
 }
 

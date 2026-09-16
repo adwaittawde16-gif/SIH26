@@ -74,7 +74,11 @@ async function fetchAPI<T>(endpoint: string, options?: RequestInit, fallbackData
       throw new Error(`API Error [${res.status}]: ${errorText || res.statusText}`);
     }
 
-    return await res.json();
+    const data = await res.json();
+    if (data && (data.error === "BACKEND_OFFLINE" || data.status === "DEMO_FALLBACK")) {
+      if (fallbackData !== undefined) return fallbackData;
+    }
+    return data;
   } catch (err: any) {
     clearTimeout(timeoutId);
 
