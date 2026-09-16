@@ -75,12 +75,11 @@ async function fetchAPI<T>(endpoint: string, options?: RequestInit, fallbackData
       ? `Request timed out for ${endpoint} — backend may be warming up`
       : `Backend unavailable for ${endpoint}: ${err.message}`;
 
-    console.warn(message, "(Using demo fallback intelligence data)");
-
-    if (fallbackData !== undefined) {
+    if (fallbackData !== undefined && process.env.NODE_ENV !== "production") {
+      console.warn(message, "(Using local development fallback intelligence data)");
       return fallbackData;
     }
-    // Only throw (and surface error to UI) when there's no fallback
+
     throw new Error(message);
   }
 }
