@@ -57,8 +57,9 @@ export default function CommandCenterPage() {
   if (error) return <ErrorState message={error} onRetry={() => window.location.reload()} />;
 
   const topSuspect = data?.leaderboard[0];
-  const criticalCount = data?.critical_count || (data?.leaderboard ? data.leaderboard.filter(s => s.total_threat_score >= 80).length : 6);
-  const highCount = data?.high_count || (data?.leaderboard ? data.leaderboard.filter(s => s.total_threat_score >= 60 && s.total_threat_score < 80).length : 24);
+  const criticalCount = data?.critical_count ?? 0;
+  const highCount = data?.high_count ?? 0;
+  const totalSuspects = data?.total_suspects ?? data?.leaderboard.length ?? 0;
 
   const modules = [
     {
@@ -189,11 +190,11 @@ export default function CommandCenterPage() {
 
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-        <KPICard label="Suspects Profiled" value={data?.total_suspects || 100} accent="blue" icon={Flame} subtext="Active surveillance mesh" />
-        <KPICard label="Active Crime Rings" value="88" accent="purple" icon={Layers} subtext="Priority Syndicate RING-01" />
+        <KPICard label="Suspects Profiled" value={totalSuspects} accent="blue" icon={Flame} subtext="Active surveillance mesh" />
+        <KPICard label="Active Crime Rings" value="—" accent="purple" icon={Layers} subtext="Live syndicate service" />
         <KPICard label="Critical Risk Tiers" value={criticalCount} accent="red" icon={ShieldAlert} subtext="Requires immediate warrant" />
-        <KPICard label="CCTV Encounters" value="12" accent="amber" icon={Camera} subtext="Multi-camera cross sightings" />
-        <KPICard label="Night Hotspots" value="16" accent="cyan" icon={Moon} subtext="00:00-06:00 IST cell spikes" />
+        <KPICard label="CCTV Encounters" value="—" accent="amber" icon={Camera} subtext="Live CCTV service" />
+        <KPICard label="Night Hotspots" value="—" accent="cyan" icon={Moon} subtext="Live nocturnal service" />
       </div>
 
       {/* Priority Top Suspect Alert Card */}
@@ -251,7 +252,7 @@ export default function CommandCenterPage() {
             </h3>
           </div>
           <span className="text-[11px] font-mono text-slate-400 hidden sm:inline">
-            Zero-Loss Live Stream Data
+            Live backend data · no demo fallback
           </span>
         </div>
 
