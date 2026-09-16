@@ -102,7 +102,12 @@ export interface CCTVMeetingsResponse {
     avg_distance_meters: number;
     avg_match_confidence: number;
     sighting_status: string;
-    encounter_time: string;
+    encounter_time?: string;
+    sighting_time_s1?: string;
+    sighting_time_s2?: string;
+    match_confidence?: number;
+    time_difference_min?: number;
+    [key: string]: any;
   }[];
 }
 
@@ -287,11 +292,16 @@ export interface FinancialIntelligenceResponse {
   }>;
   transactions: Array<{
     transaction_id: string;
-    sender_name: string;
-    receiver_name: string;
-    merchant_category: string;
+    sender_name?: string;
+    receiver_name?: string;
+    merchant_category?: string;
     amount_inr: number;
     timestamp: string;
+    fir_number?: string;
+    status?: string;
+    payment_mode?: string;
+    account_holder?: string;
+    merchant_or_payee?: string;
   }>;
 }
 
@@ -574,6 +584,7 @@ export interface SurveillanceHeatmapResponse {
     spot_location: string;
     patrol_officer_1: string;
     patrol_officer_2: string;
+    patrol_officer_3?: string;
     observation_details: string;
     panchnama_conducted: boolean;
     witness_count: number;

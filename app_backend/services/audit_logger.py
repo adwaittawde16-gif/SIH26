@@ -17,8 +17,10 @@ AUDIT_DB_PATH = os.getenv("AUDIT_DB_PATH", "audit_log.db")
 
 class AuditLogger:
     def __init__(self, db_path: str = AUDIT_DB_PATH):
-        self.db_path = db_path
-        self._init_db()
+    self.db_path = db_path
+    db_dir = os.path.dirname(db_path)
+    if db_dir:
+        os.makedirs(db_dir, exist_ok=True)
 
     def _get_connection(self) -> sqlite3.Connection:
         conn = sqlite3.connect(self.db_path)

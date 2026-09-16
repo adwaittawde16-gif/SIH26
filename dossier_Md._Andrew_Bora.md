@@ -1,0 +1,52 @@
+# 🚨 INTELLIGENCE DOSSIER: MD. ANDREW BORA
+
+**Phone Number:** `+91-8714702226`  
+**Overall Threat Score:** `34.1 / 100`  
+**Threat Status:** `LOW RISK`
+
+---
+
+## 📊 6-Parameter Intelligence Score Breakdown
+
+| Intelligence Parameter | Score Earned | Max Weight |
+| :--- | :---: | :---: |
+| 1. CCTV Co-location & Physical Meetings | **0.0 pts** | 30 pts (MAX) |
+| 2. CDR Interaction Network Risk | **2.1 pts** | 20 pts |
+| 3. FIR Severity & Active Cases | **9.0 pts** | 15 pts |
+| 4. Criminal History & Prior Convictions | **3.0 pts** | 15 pts |
+| 5. Financial Risk & Spending Patterns | **10.0 pts** | 10 pts |
+| 6. Field Surveillance Observations | **10.0 pts** | 10 pts |
+| **TOTAL COMPOSITE THREAT SCORE** | **34.1 pts** | **100 pts** |
+
+---
+
+## 📄 Active FIR & Police Reports (1 FIRs)
+
+- **FIR Number:** `0438/2026`
+  - **Police Station:** Worli Police Station
+  - **Act & Sections:** `Maharashtra Prohibition Act, 1949 - Sec 85(1)`
+  - **Incident Date/Time:** 2026-09-01 18:32:47
+  - **Investigating Officer:** Jagdish Basak (Inspector of Police)
+  - **Hospital Reference:** Sion Hospital Mumbai
+
+---
+
+## 📹 Confirmed CCTV Physical Meetings (0 Meetings)
+
+No physical meetings recorded.
+
+---
+
+## ⚖️ Criminal History & Prior Convictions
+
+- **Prior Convictions Count:** 1
+- **Previous Offence:** SIM Box Operation, Bank Impersonation Phishing & UPI Mule Laundering
+- **Previous Police Station:** Tardeo Police Station
+- **Current Case Status:** `Judicial Custody (Arthur Road Jail)`
+
+---
+
+## 💳 Financial Transactions Log (3 Transactions)
+- `2026-09-01 15:27:47` | Mode: `Net Banking` | Payee: `Local Counter` | Amount: ₹4043.0 | Status: **FAILED**
+- `2026-08-10 19:30:00` | Mode: `UPI / QR Merchant` | Payee: `Liquor Store` | Amount: ₹15520.41 | Status: **FAILED**
+- `2026-08-23 23:30:00` | Mode: `UPI / QR Merchant` | Payee: `Peer Transfer` | Amount: ₹4209.92 | Status: **SUCCESS**

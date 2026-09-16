@@ -48,7 +48,12 @@ import {
   fallbackCourtEvidenceCertificate,
   fallbackFinancialEntities,
   fallbackSuspiciousPatterns,
-  fallbackIntelligenceInsights
+  fallbackIntelligenceInsights,
+  getFallbackDossier,
+  getFallbackTimeline,
+  searchFallbackIntelligence,
+  fallbackPMLADossierMap,
+  fallbackCourtCertMap
 } from "./mockData";
 
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "";
@@ -208,10 +213,10 @@ export const api = {
     fetchAPI<FinancialCentralityResponse>("/api/financial/centrality", undefined, fallbackFinancialCentrality as any),
 
   getPMLADossier: (entityId: string) =>
-    fetchAPI<PMLADossierResponse>(`/api/financial/dossier/${encodeURIComponent(entityId)}`, undefined, fallbackPMLADossier as any),
+    fetchAPI<PMLADossierResponse>(`/api/financial/dossier/${encodeURIComponent(entityId)}`, undefined, (fallbackPMLADossierMap[entityId] || fallbackPMLADossier) as any),
 
   getCourtEvidenceCertificate: (entityId: string) =>
-    fetchAPI<CourtEvidenceCertificateResponse>(`/api/financial/court-certificate/${encodeURIComponent(entityId)}`, undefined, fallbackCourtEvidenceCertificate as any),
+    fetchAPI<CourtEvidenceCertificateResponse>(`/api/financial/court-certificate/${encodeURIComponent(entityId)}`, undefined, (fallbackCourtCertMap[entityId] || fallbackCourtEvidenceCertificate) as any),
 
   getFinancialEntities: () =>
     fetchAPI<{ total_entities: number; categories: any; all_entities: any[] }>("/api/financial/entities", undefined, fallbackFinancialEntities as any),
@@ -225,18 +230,22 @@ export const api = {
 
   getCellTowerCoLocation: (timeWindowMinutes: number = 30) =>
     fetchAPI<any>(`/api/enhanced-cdr/cell-tower-co-location?time_window_minutes=${timeWindowMinutes}`, undefined, {
-      total_clusters: 4,
+      total_clusters: 6,
       clusters: [
-        { tower_id: "MH-TOWER-BYCULLA-04", location: "Byculla", suspect_count: 3, suspects: ["Md. Ranbir Bhalla", "Md. Teerth Bhargava", "Md. Vedant Padmanabhan"] }
+        { tower_id: "MH-TOWER-BYCULLA-04", location: "Byculla Station Road", suspect_count: 5, suspects: ["Md. Advik Golla", "Md. Zashil Mistry", "Md. Ranbir Bhalla", "Md. Azad Mannan", "Md. Indrajit Kunda"] },
+        { tower_id: "MH-TOWER-AGRIPADA-02", location: "Agripada Junction", suspect_count: 4, suspects: ["Md. Balendra Nayak", "Md. Tarak Sahni", "Md. Teerth Bhargava", "Md. Darsh Sampath"] },
+        { tower_id: "MH-TOWER-MAZGAON-01", location: "Mazgaon Docks", suspect_count: 3, suspects: ["Md. Samar Nagar", "Md. Pranit Arya", "Md. Umang Mody"] }
       ]
     }),
 
   getCrossDomainCorrelation: () =>
     fetchAPI<any>("/api/enhanced-cdr/cross-domain-correlation", undefined, {
-      correlations_count: 6,
-      top_correlations: [
-        { suspect: "Md. Ranbir Bhalla", domain_overlap: ["CDR", "CCTV", "FINANCIAL", "NOCTURNAL"], correlation_score: 0.96 }
-      ]
+      correlations_count: 8,
+      top_correlations: fallbackLeaderboard.leaderboard.slice(0, 6).map(s => ({
+        suspect: s.suspect_name,
+        domain_overlap: Object.entries(s.driver_breakdown || {}).filter(([_, v]) => v > 0).map(([k]) => k.toUpperCase()),
+        correlation_score: Math.min(0.99, (s.total_threat_score / 100) + 0.05)
+      }))
     }),
 
   getAdvancedNetworkAnalysis: () =>
@@ -265,19 +274,13 @@ export const api = {
     fetchAPI<AlertsResponse>("/api/dossiers/alerts", undefined, fallbackAlerts),
 
   getSuspectDossier: (name: string) =>
-    fetchAPI<SuspectDossierDetails>(`/api/dossiers/suspect?name=${encodeURIComponent(name)}`, undefined, { ...fallbackDossier, suspect_name: name }),
+    fetchAPI<SuspectDossierDetails>(`/api/dossiers/suspect?name=${encodeURIComponent(name)}`, undefined, getFallbackDossier(name)),
 
   getSuspectTimeline: (name: string) =>
-    fetchAPI<import("../types").TimelineResponse>(`/api/dossiers/timeline?name=${encodeURIComponent(name)}`, undefined, { ...fallbackTimeline, suspect_name: name }),
+    fetchAPI<import("../types").TimelineResponse>(`/api/dossiers/timeline?name=${encodeURIComponent(name)}`, undefined, getFallbackTimeline(name)),
 
   searchIntelligence: (query: string) =>
-    fetchAPI<SearchResultResponse>(`/api/dossiers/search?q=${encodeURIComponent(query)}`, undefined, {
-      query,
-      total_matches: 4,
-      fir_matches: [{ fir_number: "0254/2026", accused_name: "Md. Ranbir Bhalla", location: "Byculla" }],
-      cdr_matches: [{ caller: "Md. Ranbir Bhalla", receiver: "Md. Teerth Bhargava" }],
-      cctv_matches: [{ camera_id: "MH-CCTV-9890", location: "Byculla" }]
-    }),
+    fetchAPI<SearchResultResponse>(`/api/dossiers/search?q=${encodeURIComponent(query)}`, undefined, searchFallbackIntelligence(query)),
 
   // Module 9: Social Media & Digital Footprint
   getSocialAnalytics: () =>
@@ -293,13 +296,13 @@ export const api = {
       method: "POST",
       body: JSON.stringify({ fir_text: firText, fir_number: firNumber || "" })
     }, {
-      fir_number: firNumber || "FIR-0254/2026",
-      suspects_extracted: ["Md. Ranbir Bhalla", "Md. Teerth Bhargava"],
-      co_accused_extracted: ["Md. Vedant Padmanabhan"],
-      locations_extracted: ["Byculla", "Station Road Footpath", "Venus Wine Shop"],
-      ipc_sections: ["IPC 384", "IPC 307"],
-      modus_operandi_tags: ["Extortion", "Armed Intimidation"],
-      confidence_score: 0.94
+      fir_number: firNumber || "FIR-0973/2026",
+      suspects_extracted: [fallbackLeaderboard.leaderboard[0].suspect_name, fallbackLeaderboard.leaderboard[1].suspect_name],
+      co_accused_extracted: [fallbackLeaderboard.leaderboard[2].suspect_name],
+      locations_extracted: ["Byculla Station Road Footpath", "Agripada Junction", "Venus Wine Shop"],
+      ipc_sections: ["MCOCA Sec 3(1)(ii)", "IPC 384", "IPC 387", "Arms Act 25/27"],
+      modus_operandi_tags: ["Extortion", "Armed Intimidation", "Burner SIM Relays"],
+      confidence_score: 0.96
     } as any),
 
   // Shared Geo Points
@@ -314,8 +317,8 @@ export const api = {
     }, {
       status: "SUCCESS",
       query: prompt,
-      answer: `Analysis based on ingested CDR, CCTV, and Financial intelligence indicates high correlation with suspect Md. Ranbir Bhalla's syndicate network. Recommend cross-referencing with active PMLA attachments.`,
-      related_suspects: ["Md. Ranbir Bhalla", "Md. Teerth Bhargava"]
+      answer: `Analysis based on 100 profiled suspects, 186 financial transactions (INR 8.69 Cr volume), 182 CDR calls, and 177 CCTV sightings indicates high correlation with top syndicate networks. Primary threat focus: ${fallbackLeaderboard.leaderboard[0].suspect_name} (Score: ${fallbackLeaderboard.leaderboard[0].total_threat_score}/100, MSISDN: ${fallbackLeaderboard.leaderboard[0].phone_number}). Recommend cross-referencing with active PMLA attachments.`,
+      related_suspects: fallbackLeaderboard.leaderboard.slice(0, 3).map(s => s.suspect_name)
     }),
 
   // Module 10: Criminal History Database
