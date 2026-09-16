@@ -25,10 +25,15 @@ import os
 import json
 import math
 import hashlib
-import spacy
 from typing import List, Dict, Any, Optional, Tuple, Set
 
-# Try to import transformer-based models, fallback to rule-based if not available
+# Optional ML/NLP accelerators. The rule-based engine remains fully functional
+# when these packages are not installed, which keeps serverless deployments small.
+try:
+    import spacy
+except ImportError:
+    spacy = None
+
 try:
     from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
     from sentence_transformers import SentenceTransformer
@@ -36,7 +41,6 @@ try:
     TRANSFORMERS_AVAILABLE = True
 except ImportError:
     TRANSFORMERS_AVAILABLE = False
-    # Create dummy classes for type hints when transformers not available
     AutoTokenizer = None
     AutoModelForTokenClassification = None
     pipeline = None
