@@ -1,6 +1,6 @@
 {
+  "buildCommand": "cd frontend && npm install && npm run build",
   "outputDirectory": "frontend/.next",
-  "rewrites": [
-    { "source": "/api/(.*)", "destination": "/api/index.py" }
-  ]
+  "framework": "nextjs",
+  "installCommand": "cd frontend && npm install"
 }

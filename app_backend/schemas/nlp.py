@@ -37,6 +37,18 @@ class LegalStatuteDetail(BaseModel):
     bailable: bool
     confidence: float
 
+class SuggestedStatuteDetail(BaseModel):
+    raw_section: str
+    code: str
+    title: str
+    bns_equivalent: str
+    severity_score: int
+    category: str
+    bailable: bool
+    confidence: float
+    suggested: bool = True
+    suggestion_reason: str = ""
+
 class ModusOperandiDetail(BaseModel):
     crime_category: str
     confidence: float
@@ -56,9 +68,11 @@ class FIRNLPResponse(BaseModel):
     vehicles: List[str] = Field(default_factory=list)
     aliases: List[str] = Field(default_factory=list)
     statutes: List[LegalStatuteDetail] = Field(default_factory=list)
+    suggested_statutes: List[SuggestedStatuteDetail] = Field(default_factory=list)
     modus_operandi: List[ModusOperandiDetail] = Field(default_factory=list)
     financial_amounts: List[str] = Field(default_factory=list)
     crime_types: List[str]
     relationships: List[ExtractedRelationship]
     case_severity_score: float = 0.0
+    severity_tier: str = "LOW"
     summary_verdict: str = ""

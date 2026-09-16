@@ -20,7 +20,8 @@ import {
   FinancialCentralityResponse,
   PMLADossierResponse,
   CourtEvidenceCertificateResponse,
-  SuspiciousPatternResponse
+  SuspiciousPatternResponse,
+  CDRComparisonResponse
 } from "../types";
 
 import {
@@ -36,14 +37,17 @@ import {
   fallbackDossier,
   fallbackTimeline,
   fallbackSocial,
-  fallbackGeo
+  fallbackGeo,
+  fallbackCriminalSummary,
+  fallbackCriminalRecordsList
 } from "./mockData";
 
-const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8080";
+const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8002";
 
 async function fetchAPI<T>(endpoint: string, options?: RequestInit, fallbackData?: T): Promise<T> {
   const controller = new AbortController();
-  const timeoutId = setTimeout(() => controller.abort(), 3000);
+  // 15s timeout — backend loads 8 CSVs + graph on startup, can be slow on first hit
+  const timeoutId = setTimeout(() => controller.abort(), 15000);
 
   try {
     const res = await fetch(`${BASE_URL}${endpoint}`, {
@@ -64,14 +68,23 @@ async function fetchAPI<T>(endpoint: string, options?: RequestInit, fallbackData
     return await res.json();
   } catch (err: any) {
     clearTimeout(timeoutId);
-    console.warn(`Backend fetch failed for ${endpoint} (Using demo fallback intelligence data):`, err.message);
+
+    // Provide a cleaner message for timeout vs network error
+    const isTimeout = err?.name === "AbortError";
+    const message = isTimeout
+      ? `Request timed out for ${endpoint} — backend may be warming up`
+      : `Backend unavailable for ${endpoint}: ${err.message}`;
+
+    console.warn(message, "(Using demo fallback intelligence data)");
 
     if (fallbackData !== undefined) {
       return fallbackData;
     }
-    throw err;
+    // Only throw (and surface error to UI) when there's no fallback
+    throw new Error(message);
   }
 }
+
 
 export const api = {
   // Health Check
@@ -101,6 +114,12 @@ export const api = {
 
   getCDRGraph: () =>
     fetchAPI<NetworkGraphResponse>("/api/cdr/graph", undefined, fallbackCDRGraph),
+
+  getCDRComparison: (suspectA: string, suspectB: string) =>
+    fetchAPI<CDRComparisonResponse>(
+      `/api/cdr/compare?suspect_a=${encodeURIComponent(suspectA)}&suspect_b=${encodeURIComponent(suspectB)}`
+    ),
+
 
   // Module 3: CCTV Co-Location Encounters
   getCCTVMeetings: () =>
@@ -179,6 +198,9 @@ export const api = {
   getCourtEvidenceCertificate: (entityId: string) =>
     fetchAPI<CourtEvidenceCertificateResponse>(`/api/financial/court-certificate/${encodeURIComponent(entityId)}`),
 
+  getFinancialEntities: () =>
+    fetchAPI<{ total_entities: number; categories: any; all_entities: any[] }>("/api/financial/entities"),
+
   // Enhanced CDR Analysis
   getEnhancedCDRSummary: () =>
     fetchAPI<CDRSummaryResponse>("/api/enhanced-cdr/summary"),
@@ -194,6 +216,16 @@ export const api = {
 
   getAdvancedNetworkAnalysis: () =>
     fetchAPI<any>("/api/enhanced-cdr/advanced-network-analysis"),
+
+  // Network Relationship Visualization
+  getNetworkGraph: (focusEntity?: string, depth?: number, edgeTypes?: string[]) => {
+    const params = new URLSearchParams();
+    if (focusEntity) params.append("focus_entity", focusEntity);
+    if (depth) params.append("depth", depth.toString());
+    if (edgeTypes && edgeTypes.length > 0) params.append("edge_types", edgeTypes.join(","));
+    const query = params.toString() ? `?${params.toString()}` : "";
+    return fetchAPI<NetworkGraphResponse>(`/api/graph_analytics/network${query}`);
+  },
 
 
   // Module 6: Nocturnal Call Anomalies
@@ -227,31 +259,39 @@ export const api = {
   getSocialAnalytics: () =>
     fetchAPI<import("../types").SocialMediaResponse>("/api/social-analytics/footprint", undefined, fallbackSocial),
 
+  // Module 10: Intelligence Insights
+  getIntelligenceInsights: () =>
+    fetchAPI<import("../types").IntelligenceInsightsResponse>("/api/intelligence/insights"),
+
   // NLP FIR Parser
   extractFIRNLP: (firText: string, firNumber?: string) =>
     fetchAPI<import("../types").FIRNLPResponse>("/api/fir/extract", {
       method: "POST",
       body: JSON.stringify({ fir_text: firText, fir_number: firNumber || "" })
-    }, {
-      fir_id: "NLP-DEMO",
-      fir_number: firNumber || "FIR-0254/2026",
-      raw_text: firText,
-      entities: [
-        { text: "Md. Ranbir Bhalla", category: "PERSON", confidence: 0.95 },
-        { text: "Md. Teerth Bhargava", category: "PERSON", confidence: 0.95 },
-        { text: "Byculla", category: "LOCATION", confidence: 0.90 },
-        { text: "IPC Section 384", category: "IPC_SECTION", confidence: 0.98 }
-      ],
-      suspects: ["Md. Ranbir Bhalla", "Md. Teerth Bhargava"],
-      co_accused: ["Md. Teerth Bhargava"],
-      locations: ["Byculla", "Venus Wine Shop"],
-      crime_types: ["Extortion & Protection Racket"],
-      relationships: [
-        { source: "Md. Ranbir Bhalla", target: "Md. Teerth Bhargava", relation_type: "CO_ACCUSED" }
-      ]
     }),
 
   // Shared Geo Points
   getGeoPoints: (category?: string) =>
-    fetchAPI<import("../types").GeoPointsResponse>(`/api/geo/points${category ? `?category=${encodeURIComponent(category)}` : ""}`, undefined, fallbackGeo)
+    fetchAPI<import("../types").GeoPointsResponse>(`/api/geo/points${category ? `?category=${encodeURIComponent(category)}` : ""}`, undefined, fallbackGeo),
+
+  // Tactical AI Copilot Natural Language Query
+  queryCopilot: (prompt: string) =>
+    fetchAPI<any>("/api/core-ai/copilot/query", {
+      method: "POST",
+      body: JSON.stringify({ prompt })
+    }),
+
+  // Module 10: Criminal History Database
+  getCriminalHistorySummary: () =>
+    fetchAPI<import("../types").CriminalHistorySummaryResponse>("/api/criminal-history/summary", undefined, fallbackCriminalSummary),
+
+  getCriminalRecords: (params?: { search?: string; case_status?: string; police_station?: string; min_convictions?: number }) => {
+    const q = new URLSearchParams();
+    if (params?.search) q.set("search", params.search);
+    if (params?.case_status) q.set("case_status", params.case_status);
+    if (params?.police_station) q.set("police_station", params.police_station);
+    if (params?.min_convictions !== undefined) q.set("min_convictions", params.min_convictions.toString());
+    const query = q.toString() ? `?${q.toString()}` : "";
+    return fetchAPI<import("../types").CriminalRecordsListResponse>(`/api/criminal-history/records${query}`, undefined, fallbackCriminalRecordsList);
+  }
 };

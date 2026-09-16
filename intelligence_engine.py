@@ -216,6 +216,18 @@ class IntelligenceEngine:
             total_threat_score = round(cctv_score + cdr_score + fir_score + crim_score + fin_score + surv_score, 1)
             total_threat_score = min(100.0, max(0.0, total_threat_score))
 
+            # Compute driver breakdown and primary driver
+            driver_breakdown = {
+                "CCTV": cctv_score,
+                "CDR": cdr_score,
+                "FIR": fir_score,
+                "Criminal History": crim_score,
+                "Financial": fin_score,
+                "Surveillance": surv_score
+            }
+            primary_driver = max(driver_breakdown, key=driver_breakdown.get)
+            primary_driver_pct = (driver_breakdown[primary_driver] / (cctv_score + cdr_score + fir_score + crim_score + fin_score + surv_score) * 100) if (cctv_score + cdr_score + fir_score + crim_score + fin_score + surv_score) > 0 else 0.0
+
             suspect_scores.append({
                 'suspect_name': name,
                 'phone_number': self.name_to_phone.get(name, 'N/A'),
@@ -225,7 +237,10 @@ class IntelligenceEngine:
                 'fir_severity_score': round(fir_score, 1),
                 'criminal_history_score': round(crim_score, 1),
                 'financial_risk_score': round(fin_score, 1),
-                'surveillance_score': round(surv_score, 1)
+                'surveillance_score': round(surv_score, 1),
+                'primary_driver': primary_driver,
+                'primary_driver_pct': round(primary_driver_pct, 1),
+                'driver_breakdown': driver_breakdown
             })
 
         score_df = pd.DataFrame(suspect_scores).sort_values(by='total_threat_score', ascending=False)

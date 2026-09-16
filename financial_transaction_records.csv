@@ -139,3 +139,49 @@ TXN90011594,0808/2026,Md. Ayush Buch,Wire Transfer,3706.2,2026-08-05 22:30:00,Je
 TXN90011821,0808/2026,Md. Ayush Buch,UPI / QR Merchant,15056.64,2026-08-14 19:30:00,Peer Transfer,PENDING
 TXN90012115,0920/2026,Md. Amol Nagy,ATM Withdrawal,22941.35,2026-08-10 23:30:00,Liquor Store,FAILED
 TXN90012506,0920/2026,Md. Amol Nagy,Wire Transfer,3855.18,2026-08-24 11:30:00,Peer Transfer,PENDING
+TXN90012507,0001/2026,Vikramaditya 'Bhai' Singhania,Wire Transfer,180000,2026-08-01 00:00:00,Shree Balaji Finvest & Leaseholdings Pvt Ltd,SUCCESS
+TXN90012508,0002/2026,Vikramaditya 'Bhai' Singhania,UPI / QR Merchant,180000,2026-08-01 00:01:40,Shree Balaji Finvest & Leaseholdings Pvt Ltd,PENDING
+TXN90012509,0003/2026,Vikramaditya 'Bhai' Singhania,Net Banking,180000,2026-08-01 00:03:20,Shree Balaji Finvest & Leaseholdings Pvt Ltd,FAILED
+TXN90012510,0004/2026,Vikramaditya 'Bhai' Singhania,Cash,180000,2026-08-01 00:05:00,Shree Balaji Finvest & Leaseholdings Pvt Ltd,SUCCESS
+TXN90012511,0005/2026,Vikramaditya 'Bhai' Singhania,Wire Transfer,180000,2026-08-01 00:06:40,Shree Balaji Finvest & Leaseholdings Pvt Ltd,PENDING
+TXN90012512,0006/2026,Vikramaditya 'Bhai' Singhania,UPI / QR Merchant,180000,2026-08-01 00:08:20,Shree Balaji Finvest & Leaseholdings Pvt Ltd,FAILED
+TXN90012513,0007/2026,Vikramaditya 'Bhai' Singhania,Net Banking,180000,2026-08-01 00:10:00,Shree Balaji Finvest & Leaseholdings Pvt Ltd,SUCCESS
+TXN90012514,0008/2026,Vikramaditya 'Bhai' Singhania,Cash,180000,2026-08-01 00:11:40,Shree Balaji Finvest & Leaseholdings Pvt Ltd,PENDING
+TXN90012515,0009/2026,Vikramaditya 'Bhai' Singhania,Wire Transfer,180000,2026-08-01 00:13:20,Shree Balaji Finvest & Leaseholdings Pvt Ltd,FAILED
+TXN90012516,0010/2026,Vikramaditya 'Bhai' Singhania,UPI / QR Merchant,180000,2026-08-01 00:15:00,Shree Balaji Finvest & Leaseholdings Pvt Ltd,SUCCESS
+TXN90012517,0011/2026,Sanjay 'CA' Verma,Net Banking,850000,2026-08-01 00:16:40,Aura Gems & Bullion Exports Pvt Ltd,PENDING
+TXN90012518,0012/2026,Sanjay 'CA' Verma,Cash,850000,2026-08-01 00:18:20,Aura Gems & Bullion Exports Pvt Ltd,FAILED
+TXN90012519,0013/2026,Sanjay 'CA' Verma,Wire Transfer,850000,2026-08-01 00:20:00,Aura Gems & Bullion Exports Pvt Ltd,SUCCESS
+TXN90012520,0014/2026,Sanjay 'CA' Verma,UPI / QR Merchant,850000,2026-08-01 00:21:40,Aura Gems & Bullion Exports Pvt Ltd,PENDING
+TXN90012521,0015/2026,Sanjay 'CA' Verma,Net Banking,850000,2026-08-01 00:23:20,Aura Gems & Bullion Exports Pvt Ltd,FAILED
+TXN90012522,0016/2026,Sanjay 'CA' Verma,Cash,850000,2026-08-01 00:25:00,Aura Gems & Bullion Exports Pvt Ltd,SUCCESS
+TXN90012523,0017/2026,Sanjay 'CA' Verma,Wire Transfer,850000,2026-08-01 00:26:40,Aura Gems & Bullion Exports Pvt Ltd,PENDING
+TXN90012524,0018/2026,Sanjay 'CA' Verma,UPI / QR Merchant,850000,2026-08-01 00:28:20,Aura Gems & Bullion Exports Pvt Ltd,FAILED
+TXN90012525,0019/2026,Sanjay 'CA' Verma,Net Banking,850000,2026-08-01 00:30:00,Aura Gems & Bullion Exports Pvt Ltd,SUCCESS
+TXN90012526,0020/2026,Sanjay 'CA' Verma,Cash,850000,2026-08-01 00:31:40,Aura Gems & Bullion Exports Pvt Ltd,PENDING
+TXN90012527,0021/2026,Raju 'Chaiwala' Kanojia,Wire Transfer,48500,2026-08-01 00:33:20,Kunal 'Student' Sonawane,FAILED
+TXN90012528,0022/2026,Raju 'Chaiwala' Kanojia,UPI / QR Merchant,48500,2026-08-01 00:35:00,Deepak 'Delivery' Yadav,SUCCESS
+TXN90012529,0023/2026,Raju 'Chaiwala' Kanojia,Net Banking,48500,2026-08-01 00:36:40,Sachin 'Rickshaw' Jadhav,PENDING
+TXN90012530,0024/2026,Raju 'Chaiwala' Kanojia,Cash,48500,2026-08-01 00:38:20,Akash 'Carpenter' Shinde,FAILED
+TXN90012531,0025/2026,Raju 'Chaiwala' Kanojia,Wire Transfer,48500,2026-08-01 00:40:00,Pooja 'Beautician' Rathod,SUCCESS
+TXN90012532,0026/2026,Raju 'Chaiwala' Kanojia,UPI / QR Merchant,48500,2026-08-01 00:41:40,Suraj 'Waiter' Kanojia,PENDING
+TXN90012533,0027/2026,Raju 'Chaiwala' Kanojia,Net Banking,48500,2026-08-01 00:43:20,Vikas 'Painter' Nishad,FAILED
+TXN90012534,0028/2026,Raju 'Chaiwala' Kanojia,Cash,48500,2026-08-01 00:45:00,Kavita 'Housewife' Gaikwad,SUCCESS
+TXN90012535,0029/2026,Kunal 'Student' Sonawane,Wire Transfer,48500,2026-08-01 00:46:40,Mahesh 'Angadia' Jhaveri & Sons,PENDING
+TXN90012536,0030/2026,Deepak 'Delivery' Yadav,UPI / QR Merchant,48500,2026-08-01 00:48:20,Mahesh 'Angadia' Jhaveri & Sons,FAILED
+TXN90012537,0031/2026,Sachin 'Rickshaw' Jadhav,Net Banking,48500,2026-08-01 00:50:00,Mahesh 'Angadia' Jhaveri & Sons,SUCCESS
+TXN90012538,0032/2026,Akash 'Carpenter' Shinde,Cash,48500,2026-08-01 00:51:40,Mahesh 'Angadia' Jhaveri & Sons,PENDING
+TXN90012539,0033/2026,Pooja 'Beautician' Rathod,Wire Transfer,48500,2026-08-01 00:53:20,Mahesh 'Angadia' Jhaveri & Sons,FAILED
+TXN90012540,0034/2026,Suraj 'Waiter' Kanojia,UPI / QR Merchant,48500,2026-08-01 00:55:00,Mahesh 'Angadia' Jhaveri & Sons,SUCCESS
+TXN90012541,0035/2026,Vikas 'Painter' Nishad,Net Banking,48500,2026-08-01 00:56:40,Mahesh 'Angadia' Jhaveri & Sons,PENDING
+TXN90012542,0036/2026,Kavita 'Housewife' Gaikwad,Cash,48500,2026-08-01 00:58:20,Mahesh 'Angadia' Jhaveri & Sons,FAILED
+TXN90012543,0037/2026,Dharmesh 'Kolkata' Kothari,Wire Transfer,7500000,2026-08-01 01:00:00,Agricultural Farmhouse 10 Acres,SUCCESS
+TXN90012544,0038/2026,Dharmesh 'Kolkata' Kothari,UPI / QR Merchant,7500000,2026-08-01 01:01:40,Agricultural Farmhouse 10 Acres,PENDING
+TXN90012545,0039/2026,Dharmesh 'Kolkata' Kothari,Net Banking,7500000,2026-08-01 01:03:20,Agricultural Farmhouse 10 Acres,FAILED
+TXN90012546,0040/2026,Dharmesh 'Kolkata' Kothari,Cash,7500000,2026-08-01 01:05:00,Agricultural Farmhouse 10 Acres,SUCCESS
+TXN90012547,0041/2026,Dharmesh 'Kolkata' Kothari,Wire Transfer,7500000,2026-08-01 01:06:40,Agricultural Farmhouse 10 Acres,PENDING
+TXN90012548,0042/2026,Dharmesh 'Kolkata' Kothari,UPI / QR Merchant,7500000,2026-08-01 01:08:20,Agricultural Farmhouse 10 Acres,FAILED
+TXN90012549,0043/2026,Dharmesh 'Kolkata' Kothari,Net Banking,7500000,2026-08-01 01:10:00,Agricultural Farmhouse 10 Acres,SUCCESS
+TXN90012550,0044/2026,Dharmesh 'Kolkata' Kothari,Cash,7500000,2026-08-01 01:11:40,Agricultural Farmhouse 10 Acres,PENDING
+TXN90012551,0045/2026,Dharmesh 'Kolkata' Kothari,Wire Transfer,7500000,2026-08-01 01:13:20,Agricultural Farmhouse 10 Acres,FAILED
+TXN90012552,0046/2026,Dharmesh 'Kolkata' Kothari,UPI / QR Merchant,7500000,2026-08-01 01:15:00,Agricultural Farmhouse 10 Acres,SUCCESS

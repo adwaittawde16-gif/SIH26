@@ -1,0 +1,9 @@
+INFO:     Started server process [28992]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8080 (Press CTRL+C to quit)
+[*] Pre-warming Intelligence Engine in RAM...
+[OK] Intelligence Engine warm-up complete! Responses will be served instantly.
+INFO:     127.0.0.1:50835 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56520 - "GET /v1/models HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:50472 - "GET /v1/models HTTP/1.1" 404 Not Found

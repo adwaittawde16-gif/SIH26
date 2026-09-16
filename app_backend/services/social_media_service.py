@@ -56,17 +56,34 @@ def get_social_media_analytics(engine: IntelligenceEngine) -> SocialMediaRespons
                 ))
 
             posts: list[SocialPost] = []
+            hashtag_pools = [
+                ["#MumbaiNightlife", "#SouthBombay", "#Dadar"],
+                ["#CashFlow", "#PrivateMeeting", "#Byculla"],
+                ["#NightDrive", "#WorliSeaFace", "#VIPAccess"],
+                ["#BusinessDeal", "#UnderworldNexus", "#ZaveriBazaar"],
+                ["#LogisticsTransit", "#Safehouse", "#BhadakamkarMarg"],
+                ["#HaftaCollection", "#LowerParel", "#NightOps"]
+            ]
             for idx, post_row in group.iterrows():
+                post_content = str(post_row.get('caption_snippet', ''))
+                # Calculate realistic deterministic engagement metrics based on post content & index
+                seed_val = (hash(post_content) ^ (idx * 997)) & 0x7FFFFFFF
+                likes_count = 45 + (seed_val % 480) # 45 to 525 realistic likes
+                shares_count = 5 + (seed_val % 75)   # 5 to 80 realistic shares
+                
+                tags = hashtag_pools[idx % len(hashtag_pools)]
+                is_high_risk = any(w in post_content.lower() for w in ["cash", "drop", "consignment", "package", "hardware", "hafta", "hawala", "burner", "recce"])
+                
                 posts.append(SocialPost(
                     post_id=str(post_row.get('profile_id', f"POST-{idx}")),
                     platform=str(post_row.get('platform', 'Unknown')),
                     timestamp=str(post_row.get('timestamp', '')),
-                    content=str(post_row.get('caption_snippet', '')),
-                    sentiment="SUSPICIOUS" if idx % 2 == 0 else "NEUTRAL",
-                    risk_level="HIGH" if idx % 3 == 0 else "MODERATE",
-                    likes=14 + (idx * 3),
-                    shares=4 + idx,
-                    hashtags=["#MumbaiUnderworld", "#NightPatrol"] if idx % 2 == 0 else ["#DailyUpdates"],
+                    content=post_content,
+                    sentiment="SUSPICIOUS" if is_high_risk else "NEUTRAL",
+                    risk_level="HIGH" if is_high_risk else "MODERATE",
+                    likes=likes_count,
+                    shares=shares_count,
+                    hashtags=tags,
                     tagged_users=[],
                     location_checkin=str(post_row.get('check_in_location', 'N/A'))
                 ))

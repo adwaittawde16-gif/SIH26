@@ -10,6 +10,7 @@ from intelligence_engine import IntelligenceEngine
 from app_backend.dependencies import get_engine
 from app_backend.schemas.nlp import FIRNLPRequest, FIRNLPResponse
 from app_backend.services import nlp_service
+from pmla_financial_graph_engine import PMLAFinancialGraphEngine
 
 router = APIRouter(prefix="/api/fir", tags=["NLP FIR Entity Extractor"])
 
@@ -42,5 +43,9 @@ def get_fir_samples():
     return SAMPLE_FIRS
 
 @router.post("/extract", response_model=FIRNLPResponse, summary="Extract entities, co-accused, locations, weapons, vehicles & legal statutes from FIR narrative")
-def extract_fir_nlp(req: FIRNLPRequest, engine: IntelligenceEngine = Depends(get_engine)):
-    return nlp_service.parse_fir_narrative(engine, req)
+def extract_fir_nlp(
+    req: FIRNLPRequest,
+    engine: IntelligenceEngine = Depends(get_engine),
+    update_graph: bool = Depends(lambda: True)  # Default to updating graph with NLP entities
+):
+    return nlp_service.parse_fir_narrative(engine, req, update_graph=update_graph)

@@ -105,3 +105,13 @@ def explain_suspect(suspect: str = Query(..., description="Name of criminal susp
 @router.get("/benchmark/stress-test", summary="Execute high-throughput 10,000 to 100,000+ record pipeline stress test")
 def run_benchmark(records: int = Query(50000, ge=5000, le=100000, description="Dataset size for stress test")):
     return BenchmarkEngine.run_stress_test(record_count=records)
+
+# ----------------- 6. TACTICAL AI COPILOT -----------------
+class CopilotQueryRequest(BaseModel):
+    prompt: str
+
+@router.post("/copilot/query", summary="Query the conversational Tactical Intelligence Copilot")
+def query_copilot(req: CopilotQueryRequest, engine: IntelligenceEngine = Depends(get_engine)) -> Dict[str, Any]:
+    from app_backend.services.copilot_engine import CopilotEngine
+    copilot = CopilotEngine(engine)
+    return copilot.query(req.prompt)

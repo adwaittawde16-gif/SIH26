@@ -23,6 +23,26 @@ ENT-CLN-02,Sunrise Hardware & Construction Supplies,PERSON_CLEAN_THIRD_PARTY,BEC
 ENT-CLN-03,Ananya 'Sister' Singhania,PERSON_CLEAN_THIRD_PARTY,AAAPC0262X,450000,ICICI Bank,ICIC0008910,794529888366,115.112.195.240,,"Bandra West, Mumbai",,,LOW,False,0,Police
 ENT-CLN-04,Shree Ganesh Wine & Liquor Mart,PERSON_CLEAN_THIRD_PARTY,CBCPD1044Z,3500000,State Bank of India,SBIN0004567,730855031651,115.112.231.187,,"Parel TT Circle, Mumbai",,,LOW,False,0,Police
 ENT-CLN-05,Al-Razaak Halal Poultry & Cold Storage,PERSON_CLEAN_THIRD_PARTY,DDAPC8115X,1800000,Punjab National Bank,PUNB0003344,838967038374,115.112.118.47,,"Nagpada Junction, Mumbai",,,LOW,False,0,Police
+ENT-SHL-06,Aura Gems & Bullion Exports Pvt Ltd,SHELL_COMPANY,U74999MH2022PTC389102,40000,HDFC Bank,HDFC0001234,990687781256,185.220.40.111,,"Gala 104, Kurla Industrial Estate, Mumbai",ENT-KP-01,ENT-NOM-05,CRITICAL,True,35000000,ED
+ENT-SHL-07,Kuber Multi-Trade Logistics LLP,SHELL_COMPANY,AAW-4891,60000,Axis Bank,UTIB0001122,990788791267,185.220.45.122,,"Plot 19, APMC Grain Market, Vashi, Navi Mumbai",ENT-KP-02,ENT-NOM-04,CRITICAL,True,28000000,ED
+ENT-SHL-08,Golden Crest Realty & Infrastructures Pvt Ltd,SHELL_COMPANY,U45200MH2020PTC341109,80000,ICICI Bank,ICIC0008910,990889801278,185.220.50.133,,"Office 12B, Station Plaza, Panvel",ENT-KP-01,ENT-NOM-06,CRITICAL,True,55000000,ED
+ENT-SHL-09,Silverline Overseas Import-Export FZE,SHELL_COMPANY,FZE-RAK-7712,0,Yes Bank,YESB0007788,990990811289,185.220.55.144,,"Free Zone Phase 2, Ras Al Khaimah / Byculla",ENT-KP-03,,CRITICAL,True,62000000,ATS
+ENT-SHL-10,Shree Balaji Finvest & Leaseholdings Pvt Ltd,SHELL_COMPANY,U65923MH2019PTC329941,50000,Kotak Mahindra Bank,KKBK0005566,991001821290,185.220.60.155,,"Room 4, Zaveri Chambers, Kalbadevi, Mumbai",ENT-KP-02,ENT-NOM-04,CRITICAL,True,40000000,ED
+ENT-SHL-11,Nexus Cloud & IT Infrastructure Solutions LLP,SHELL_COMPANY,AAY-9012,35000,Paytm Payments Bank,PYTM0123456,991112831201,185.220.65.166,,"Unit 301, Saki Naka Telepark, Andheri East",ENT-KP-01,ENT-NOM-07,CRITICAL,True,22000000,Police
+ENT-NOM-04,Sanjay 'CA' Verma,PERSON_NOMINEE,DEAPV8812A,320000,ICICI Bank,ICIC0008910,482910385910,103.45.18.29,869402058194012,"101 Pragati Towers, Opera House, Mumbai",ENT-KP-02,ENT-NOM-04,HIGH,False,0,ED
+ENT-NOM-05,Raju 'Chaiwala' Kanojia,PERSON_NOMINEE,BKCPK1902M,140000,HDFC Bank,HDFC0001234,391029481726,103.45.92.14,869402031958273,"Tea Stall, Outside Kurla Station West",ENT-KP-01,ENT-NOM-05,HIGH,False,0,ED
+ENT-NOM-06,Ganesh 'Peon' Shinde,PERSON_NOMINEE,CCDPS4401L,160000,State Bank of India,SBIN0004567,582910394827,103.45.110.88,869402094817263,"Room 8, Municipal Chawl, Parel",ENT-KP-01,ENT-NOM-06,HIGH,False,0,ED
+ENT-NOM-07,Babulal 'Runner' Parekh,PERSON_NOMINEE,ABEPP9014K,210000,Cash Vault,HAWALA-TOKEN,692019284711,103.45.73.49,869402019482736,"Dhanji Street, Zaveri Bazaar",ENT-KP-02,ENT-NOM-07,HIGH,False,0,ED
+ENT-NOM-08,Kiran 'Driver' Solanki,PERSON_NOMINEE,ADTPS6719P,190000,Punjab National Bank,PUNB0003344,481920394818,103.45.62.19,869402081947264,"Transit Camp, Sion Koliwada",ENT-KP-01,ENT-NOM-08,HIGH,False,0,ED
+ENT-MUL-09,Sameer 'Delivery' Khan,PERSON_MULE,CDEPK9182Z,50000,Paytm Payments Bank,PYTM0123456,819203918293,49.36.199.12,860192091827364,"LBS Marg, Kurla",ENT-SHL-06,,HIGH,True,0,Police
+ENT-MUL-10,Pooja 'Student' Kamble,PERSON_MULE,BCEPK4918X,35000,State Bank of India,SBIN0004567,918203918274,49.36.144.89,860192019283746,"Chembur Naka, Mumbai",ENT-SHL-06,,HIGH,True,0,Police
+ENT-MUL-11,Sunil 'Tailor' Sawant,PERSON_MULE,DDEPS1928Y,45000,Axis Bank,UTIB0001122,829102938475,49.36.177.34,860192038475629,"Dharavi Cross Road",ENT-SHL-07,,HIGH,True,0,Police
+ENT-MUL-12,Manoj 'Electrician' Gupta,PERSON_MULE,EEEPG9182X,40000,HDFC Bank,HDFC0001234,719203918284,49.36.112.56,860192058291048,"Vikhroli Parksite",ENT-SHL-08,,HIGH,True,0,Police
+ENT-CLN-06,Dr. Rajiv Mehta Multispeciality Clinic,PERSON_CLEAN_THIRD_PARTY,AAAPM9182K,4500000,HDFC Bank,HDFC0001234,918203918273,115.112.88.19,,"Prabhadevi Clinic Arcade",,,LOW,False,0,Police
+ENT-CLN-07,Kalyan Jewellers Commercial Account,PERSON_CLEAN_THIRD_PARTY,AAACK1928L,25000000,State Bank of India,SBIN0004567,819203918274,115.112.99.20,,"Zaveri Bazaar Showroom",,,LOW,False,0,Police
+ENT-CLN-08,L&T Subcontractor Infrastructure Account,PERSON_CLEAN_THIRD_PARTY,AAACL9182M,18000000,ICICI Bank,ICIC0008910,719203918275,115.112.77.21,,"Powai Works Complex",,,LOW,False,0,Police
+ENT-CLN-09,Navi Mumbai Municipal Corporation Property Tax,PERSON_CLEAN_THIRD_PARTY,GOVNMMC001,0,State Bank of India,SBIN0004567,619203918276,115.112.66.22,,"CBD Belapur, Navi Mumbai",,,LOW,False,0,Police
+ENT-CLN-10,Oberoi Realty Sales Escrow Account,PERSON_CLEAN_THIRD_PARTY,AAACO1928N,50000000,Axis Bank,UTIB0001122,519203918277,115.112.55.23,,"Goregaon East, Mumbai",,,LOW,False,0,Police
 ENT-HAW-01,Mahesh 'Angadia' Jhaveri & Sons,PERSON_HAWALA_AGENT,BBEPD8806A,800000,Cash Vault / Token System,HAWALA-TOKEN,TOKEN-2528,OFFLINE_CELLULAR,865502041726318,"Zaveri Bazaar, Kalbadevi, Mumbai",ENT-KP-02,,CRITICAL,True,25000000,ED
 ENT-HAW-02,Pankaj 'Chit' Bhansali,PERSON_HAWALA_AGENT,ACBPD9103Z,650000,Cash Vault / Token System,HAWALA-TOKEN,TOKEN-5673,OFFLINE_CELLULAR,865502066775103,"Raja Market, Surat / Opera House Mumbai",ENT-KP-02,,CRITICAL,True,25000000,ED
 ENT-AST-01,Sea-Facing Ultra-Luxury Penthouse Unit 4401,ASSET_PROPERTY,,0,N/A - Immovable/Movable Asset,PMLA-ATTACHMENT-SEC5,PROP-REG-830429,,,"Sea Face Towers, Worli, Mumbai",ENT-KP-01,,CRITICAL,True,125000000,ED
@@ -130,3 +150,23 @@ ENT-SUS-097,Md. Oliver Dasgupta,PERSON_SUSPECT,EDCPC9775A,280000,Yes Bank,YESB00
 ENT-SUS-098,Md. Ranbir Bains,PERSON_SUSPECT,ABAPB4798A,220000,HDFC Bank,HDFC0001234,223267798693,103.190.45.133,869416685175320,"Suspect Residence, Mumbai",ENT-KP-02,,MODERATE,False,0,Police
 ENT-SUS-099,Md. Karan Mistry,PERSON_SUSPECT,BBDPC6125X,180000,Yes Bank,YESB0007788,603254986487,103.86.207.74,864649454760777,"Suspect Residence, Mumbai",ENT-KP-03,,MODERATE,False,0,Police
 ENT-SUS-100,Md. Dev Mani,PERSON_SUSPECT,EDBPA5583Y,180000,Kotak Mahindra Bank,KKBK0005566,484312829345,103.207.215.38,861739981859583,"Suspect Residence, Mumbai",ENT-KP-01,,MODERATE,False,25000000,Police
+ENT-SHL-06,Aura Gems & Bullion Exports Pvt Ltd,SHELL_COMPANY,U74999MH2022PTC389102,40000,HDFC Bank,,,,"Gala 104, Kurla Industrial Estate, Mumbai",ENT-KP-01,ENT-NOM-05,CRITICAL,True,35000000,ED
+ENT-SHL-07,Kuber Multi-Trade Logistics LLP,SHELL_COMPANY,AAW-4891,60000,Axis Bank,,,,"Plot 19, APMC Grain Market, Vashi, Navi Mumbai",ENT-KP-02,ENT-NOM-04,CRITICAL,True,28000000,ED
+ENT-SHL-08,Golden Crest Realty & Infrastructures Pvt Ltd,SHELL_COMPANY,U45200MH2020PTC341109,80000,ICICI Bank,,,,"Office 12B, Station Plaza, Panvel",ENT-KP-01,ENT-NOM-06,CRITICAL,True,55000000,ED
+ENT-SHL-09,Silverline Overseas Import-Export FZE,SHELL_COMPANY,FZE-RAK-7712,0,Yes Bank,,,,"Free Zone Phase 2, Ras Al Khaimah / Byculla",ENT-KP-03,,CRITICAL,True,62000000,ATS
+ENT-SHL-10,Shree Balaji Finvest & Leaseholdings Pvt Ltd,SHELL_COMPANY,U65923MH2019PTC329941,50000,Kotak Mahindra Bank,,,,"Room 4, Zaveri Chambers, Kalbadevi, Mumbai",ENT-KP-02,ENT-NOM-04,CRITICAL,True,40000000,ED
+ENT-SHL-11,Nexus Cloud & IT Infrastructure Solutions LLP,SHELL_COMPANY,AAY-9012,35000,Paytm Payments Bank,,,,"Unit 301, Saki Naka Telepark, Andheri East",ENT-KP-01,ENT-NOM-07,CRITICAL,True,22000000,Police
+ENT-NOM-04,Sanjay 'CA' Verma,PERSON_NOMINEE,DEAPV8812A,320000,,,,"101 Pragati Towers, Opera House, Mumbai",ENT-KP-02,,HIGH,False,0,ED
+ENT-NOM-05,Raju 'Chaiwala' Kanojia,PERSON_NOMINEE,BKCPK1902M,140000,,,,"Tea Stall, Outside Kurla Station West",ENT-KP-01,,HIGH,False,0,ED
+ENT-NOM-06,Ganesh 'Peon' Shinde,PERSON_NOMINEE,CCDPS4401L,160000,,,,"Room 8, Municipal Chawl, Parel",ENT-KP-01,,HIGH,False,0,ED
+ENT-NOM-07,Babulal 'Runner' Parekh,PERSON_NOMINEE,ABEPP9014K,210000,,,,"Dhanji Street, Zaveri Bazaar",ENT-KP-02,,HIGH,False,0,ED
+ENT-NOM-08,Kiran 'Driver' Solanki,PERSON_NOMINEE,ADTPS6719P,190000,,,,"Transit Camp, Sion Koliwada",ENT-KP-01,,HIGH,False,0,ED
+ENT-CLN-06,Dr. Rajiv Mehta Multispeciality Clinic,PERSON_CLEAN_THIRD_PARTY,,0,,,,,"Commercial Medical Tenant",,,LOW,False,0,Police
+ENT-CLN-07,Kalyan Jewellers Commercial Account,PERSON_CLEAN_THIRD_PARTY,,0,,,,,"Bullion Merchant",,,LOW,False,0,Police
+ENT-CLN-08,L&T Subcontractor Infrastructure Account,PERSON_CLEAN_THIRD_PARTY,,0,,,,,"Engineering Vendor",,,LOW,False,0,Police
+ENT-CLN-09,Navi Mumbai Municipal Corporation Property Tax,PERSON_CLEAN_THIRD_PARTY,,0,,,,,"Government Account",,,LOW,False,0,Police
+ENT-CLN-10,Oberoi Realty Sales Escrow Account,PERSON_CLEAN_THIRD_PARTY,,0,,,,,"Real Estate Escrow",,,LOW,False,0,Police
+ENT-MUL-09,Gig Worker 1,PERSON_MULE,,0,,,,,"Mule account for sub-₹50k smurfing",,,HIGH,True,0,Police
+ENT-MUL-10,Gig Worker 2,PERSON_MULE,,0,,,,,"Mule account for sub-₹50k smurfing",,,HIGH,True,0,Police
+ENT-MUL-11,College Student 1,PERSON_MULE,,0,,,,,"Mule account for sub-₹50k smurfing",,,HIGH,True,0,Police
+ENT-MUL-12,College Student 2,PERSON_MULE,,0,,,,,"Mule account for sub-₹50k smurfing",,,HIGH,True,0,Police

@@ -11,6 +11,9 @@ class SuspectThreatScore(BaseModel):
     criminal_history_score: float
     financial_risk_score: float
     surveillance_score: float
+    primary_driver: Optional[str] = None
+    primary_driver_pct: Optional[float] = None
+    driver_breakdown: Optional[Dict[str, float]] = None
 
 class SuspectRiskTier(BaseModel):
     suspect_name: str

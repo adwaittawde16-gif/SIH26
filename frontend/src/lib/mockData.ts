@@ -438,6 +438,32 @@ export const fallbackSocial: SocialMediaResponse = {
           hashtags: ["#MumbaiUnderworld", "#NightPatrol"],
           tagged_users: ["@md_teerth_bhargava"],
           location_checkin: "Station Road Footpath, Byculla"
+        },
+        {
+          post_id: "SM-41281",
+          platform: "WhatsApp",
+          timestamp: "2026-08-26 01:15:22",
+          content: "Cash dropped at Venus Wine Shop as agreed. Confirm receipt on Signal.",
+          sentiment: "SUSPICIOUS",
+          risk_level: "HIGH",
+          likes: 128,
+          shares: 12,
+          hashtags: ["#CashFlow", "#Dadar"],
+          tagged_users: [],
+          location_checkin: "Venus Wine Shop, Dadar"
+        },
+        {
+          post_id: "SM-41282",
+          platform: "X / Twitter",
+          timestamp: "2026-08-27 14:05:10",
+          content: "Black Pulsar spotted near Lower Parel flyover. Recce complete, standing by.",
+          sentiment: "SUSPICIOUS",
+          risk_level: "HIGH",
+          likes: 215,
+          shares: 34,
+          hashtags: ["#NightOps", "#SouthBombay"],
+          tagged_users: [],
+          location_checkin: "Lower Parel Flyover"
         }
       ]
     }
@@ -452,3 +478,158 @@ export const fallbackGeo: GeoPointsResponse = {
     { id: "pt-3", lat: 18.9950, lng: 72.8300, title: "Field Patrol Spot: SR-2026-9901", category: "SURVEILLANCE", timestamp: "2026-08-25 14:00", details: "Special Branch Panchnama Conducted", color: "#ef4444" }
   ]
 };
+
+export const fallbackCriminalRecordsList: import("../types").CriminalRecordsListResponse = {
+  total_count: 100,
+  filtered_count: 12,
+  records: [
+    {
+      uidb_number: "UIDB-446836",
+      fir_number: "0254/2026",
+      suspect_name: "Md. Ranbir Bhalla",
+      known_aliases: "Bhaijaan, Chhota Don, Ranbir Byculla",
+      prior_convictions_count: 5,
+      previous_ps_name: "Crime Branch Anti-Extortion Cell (AEC)",
+      previous_offence: "Extortion, Running Organized Crime Syndicate & Illegal Arms Supply",
+      act_and_sections: "MCOCA 1999 Sec 3(1)(ii), 3(2), 3(4) r/w Arms Act Sec 3, 25(1B)(a), IPC 120B",
+      modus_operandi: "Running protection racket (hafta) targeting real estate developers and angadias in South Mumbai via VoIP spoofing; arms stockpiling and coordinating extortion calls from safehouses.",
+      mob_number: "MOB/CRIM/2021/048",
+      crime_category: "ORGANIZED_CRIME",
+      custody_location: "Arthur Road Jail (Barrack 12)",
+      case_year: "2021",
+      case_status: "Under Trial (Special MCOCA Court)"
+    },
+    {
+      uidb_number: "UIDB-452315",
+      fir_number: "0320/2026",
+      suspect_name: "Md. Pranit Arya",
+      known_aliases: "Doctor, Chemical Chembur, Chemist MD",
+      prior_convictions_count: 4,
+      previous_ps_name: "Anti-Narcotics Cell (ANC) Azad Maidan Unit",
+      previous_offence: "Commercial Quantity Trafficking of Mephedrone (MD) & Synthetic Narcotics",
+      act_and_sections: "NDPS Act 1985 Sec 8(c), 20(b)(ii)(C), 22(c), 29",
+      modus_operandi: "Procuring synthetic narcotics via Goa-Mumbai coastal dead-drops; distribution network operating through courier packages and nightlife circuits.",
+      mob_number: "MOB/ANTI/2023/112",
+      crime_category: "NARCOTICS_TRAFFICKING",
+      custody_location: "Taloja Central Prison (High Security)",
+      case_year: "2023",
+      case_status: "Judicial Custody (Taloja Central Prison)"
+    },
+    {
+      uidb_number: "UIDB-916113",
+      fir_number: "0108/2026",
+      suspect_name: "Md. Gagan Rao",
+      known_aliases: "Angadia Seth, Kaka Hawala, Token Babu",
+      prior_convictions_count: 3,
+      previous_ps_name: "Enforcement Directorate / Crime Branch Unit 1",
+      previous_offence: "Cross-Border Hawala Layering & Angadia Illegal Cash Conduit Operations",
+      act_and_sections: "PMLA 2002 Sec 3, Sec 4 r/w IPC 420, 120B",
+      modus_operandi: "Operating illicit hawala book across Zaveri Bazaar & Opera House; layering extortion profits via 12 fictitious shell LLP bank accounts using forged documents.",
+      mob_number: "MOB/ENFO/2022/305",
+      crime_category: "HAWALA_AND_MONEY_LAUNDERING",
+      custody_location: "Out on Conditional Bail",
+      case_year: "2022",
+      case_status: "Bailed (Condition to Report Twice Weekly)"
+    },
+    {
+      uidb_number: "UIDB-893401",
+      fir_number: "0898/2026",
+      suspect_name: "Md. Peter Barad",
+      known_aliases: "Sharpie, Shooter Vicky, Bullet Bhai",
+      prior_convictions_count: 4,
+      previous_ps_name: "Crime Branch Unit 3 (Byculla)",
+      previous_offence: "Contract Assassination (Supari), Shootout on Witness & Gang Assault",
+      act_and_sections: "IPC Sec 302, 307, 120B, 34 r/w Arms Act Sec 25(1B)(a), Sec 27",
+      modus_operandi: "Conducting motorcycle-borne reconnaissance on syndicate hit targets; executing firearm ambushes with 7.65mm country pistols.",
+      mob_number: "MOB/CRIM/2020/019",
+      crime_category: "CONTRACT_KILLING_AND_ASSAULT",
+      custody_location: "Arthur Road Jail",
+      case_year: "2020",
+      case_status: "Under Trial (Sessions Court 14)"
+    },
+    {
+      uidb_number: "UIDB-011123",
+      fir_number: "0734/2026",
+      suspect_name: "Md. Nihal Rana",
+      known_aliases: "Techie Mule, Hacker Bablu, SIM Box Imran",
+      prior_convictions_count: 3,
+      previous_ps_name: "Cyber Crime Police Station BKC",
+      previous_offence: "SIM Box Operation, Bank Impersonation Phishing & UPI Mule Laundering",
+      act_and_sections: "Information Technology Act Sec 66D, 66C r/w IPC 419, 420, 468",
+      modus_operandi: "Operating high-density 128-port SIM boxes to route offshore fraudulent KYC phishing calls; rapidly funneling victim balances through layered student mule accounts.",
+      mob_number: "MOB/CYBE/2024/091",
+      crime_category: "CYBER_FINANCIAL_FRAUD",
+      custody_location: "Judicial Custody (Arthur Road Jail)",
+      case_year: "2024",
+      case_status: "Under Trial (Metropolitan Magistrate Court)"
+    },
+    {
+      uidb_number: "UIDB-043583",
+      fir_number: "0724/2026",
+      suspect_name: "Md. Laban Prakash",
+      known_aliases: "Hafta King, Bhai Dongri, Wasim Katta",
+      prior_convictions_count: 4,
+      previous_ps_name: "Dongri Police Station",
+      previous_offence: "Armed Extortion & Intimidation of SRA Builders & Merchants",
+      act_and_sections: "IPC Sec 384, 386, 387, 506(2), 34",
+      modus_operandi: "Intimidating Slum Rehabilitation Authority (SRA) contractors and local scrap dealers; deploying muscle for forcible land possession and extorting monthly hafta.",
+      mob_number: "MOB/DONG/2023/074",
+      crime_category: "EXTORTION_AND_THREAT",
+      custody_location: "Out on Regular Bail",
+      case_year: "2023",
+      case_status: "Bailed (Weekly PS Reporting)"
+    },
+    {
+      uidb_number: "UIDB-873925",
+      fir_number: "0973/2026",
+      suspect_name: "Md. Ojas Bhavsar",
+      known_aliases: "None / Clean Profile",
+      prior_convictions_count: 0,
+      previous_ps_name: "N/A",
+      previous_offence: "None",
+      act_and_sections: "N/A",
+      modus_operandi: "No prior criminal history on record. Subject currently under preliminary intelligence observation.",
+      mob_number: "N/A",
+      crime_category: "CLEAN",
+      custody_location: "Not in Custody",
+      case_year: "N/A",
+      case_status: "Clean Record"
+    }
+  ]
+};
+
+export const fallbackCriminalSummary: import("../types").CriminalHistorySummaryResponse = {
+  total_records: 100,
+  repeat_offenders_count: 73,
+  under_trial_count: 42,
+  bailed_count: 24,
+  disposed_count: 7,
+  clean_records_count: 27,
+  offence_breakdown: {
+    "Extortion, Running Organized Crime Syndicate & Illegal Arms Supply": 7,
+    "Commercial Quantity Trafficking of Mephedrone (MD) & Synthetic Narcotics": 11,
+    "Cross-Border Hawala Layering & Angadia Illegal Cash Conduit Operations": 12,
+    "SIM Box Operation, Bank Impersonation Phishing & UPI Mule Laundering": 13,
+    "Contract Assassination (Supari), Shootout on Witness & Gang Assault": 21,
+    "Armed Extortion & Intimidation of SRA Builders & Merchants": 9
+  },
+  police_station_breakdown: {
+    "Crime Branch Anti-Extortion Cell (AEC)": 15,
+    "Anti-Narcotics Cell (ANC) Azad Maidan Unit": 11,
+    "Enforcement Directorate / Crime Branch Unit 1": 12,
+    "Cyber Crime Police Station BKC": 13,
+    "Crime Branch Unit 3 (Byculla)": 21,
+    "Dongri Police Station": 9
+  },
+  crime_category_breakdown: {
+    "CONTRACT_KILLING_AND_ASSAULT": 21,
+    "CYBER_FINANCIAL_FRAUD": 13,
+    "HAWALA_AND_MONEY_LAUNDERING": 12,
+    "NARCOTICS_TRAFFICKING": 11,
+    "EXTORTION_AND_THREAT": 9,
+    "ORGANIZED_CRIME": 7
+  },
+  top_repeat_offenders: fallbackCriminalRecordsList.records.filter(r => r.prior_convictions_count > 0).slice(0, 5)
+};
+
+

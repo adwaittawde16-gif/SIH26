@@ -1,0 +1,13 @@
+﻿services:
+  - type: web
+    name: police-intel-api
+    env: python
+    region: singapore  # closest to India
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python -m uvicorn app_backend.main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHONPATH
+        value: /opt/render/project/src
+      - key: PYTHON_VERSION
+        value: 3.10.0
