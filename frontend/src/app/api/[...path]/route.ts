@@ -13,7 +13,7 @@ export async function GET(
   const backendBase =
     process.env.NEXT_PUBLIC_API_URL ||
     process.env.BACKEND_URL ||
-    "http://127.0.0.1:8002";
+    "http://127.0.0.1:8080";
 
   try {
     const backendRes = await fetch(`${backendBase}/api/${path}${query}`, {
@@ -61,7 +61,7 @@ export async function POST(
   const backendBase =
     process.env.NEXT_PUBLIC_API_URL ||
     process.env.BACKEND_URL ||
-    "http://127.0.0.1:8002";
+    "http://127.0.0.1:8080";
 
   try {
     const body = await request.json().catch(() => ({}));

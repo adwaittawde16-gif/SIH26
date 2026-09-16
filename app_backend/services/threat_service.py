@@ -19,10 +19,10 @@ def get_threat_leaderboard(engine: IntelligenceEngine) -> ThreatLeaderboardRespo
     
     merged = scores_df.to_dict(orient='records')
     
-    crit = len(tier_df[tier_df['risk_tier'] == 'CRITICAL'])
-    high = len(tier_df[tier_df['risk_tier'] == 'HIGH'])
-    mod = len(tier_df[tier_df['risk_tier'] == 'MODERATE'])
-    low = len(tier_df[tier_df['risk_tier'] == 'LOW'])
+    crit = len(tier_df[tier_df['risk_tier'].str.contains('CRITICAL', na=False)])
+    high = len(tier_df[tier_df['risk_tier'].str.contains('HIGH', na=False)])
+    mod = len(tier_df[tier_df['risk_tier'].str.contains('MODERATE', na=False)])
+    low = len(tier_df[tier_df['risk_tier'].str.contains('LOW', na=False)])
     
     leaderboard = [SuspectThreatScore(**item) for item in merged]
     

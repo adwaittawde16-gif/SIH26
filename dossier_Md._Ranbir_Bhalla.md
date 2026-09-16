@@ -1,7 +1,7 @@
 # 🚨 INTELLIGENCE DOSSIER: MD. RANBIR BHALLA
 
 **Phone Number:** `+91-2236381844`  
-**Overall Threat Score:** `86.6 / 100`  
+**Overall Threat Score:** `80.6 / 100`  
 **Threat Status:** `CRITICAL HIGH RISK`
 
 ---
@@ -13,10 +13,10 @@
 | 1. CCTV Co-location & Physical Meetings | **28.6 pts** | 30 pts (MAX) |
 | 2. CDR Interaction Network Risk | **20.0 pts** | 20 pts |
 | 3. FIR Severity & Active Cases | **9.0 pts** | 15 pts |
-| 4. Criminal History & Prior Convictions | **9.0 pts** | 15 pts |
+| 4. Criminal History & Prior Convictions | **3.0 pts** | 15 pts |
 | 5. Financial Risk & Spending Patterns | **10.0 pts** | 10 pts |
 | 6. Field Surveillance Observations | **10.0 pts** | 10 pts |
-| **TOTAL COMPOSITE THREAT SCORE** | **86.6 pts** | **100 pts** |
+| **TOTAL COMPOSITE THREAT SCORE** | **80.6 pts** | **100 pts** |
 
 ---
 
@@ -49,10 +49,10 @@
 
 ## ⚖️ Criminal History & Prior Convictions
 
-- **Prior Convictions Count:** 2
-- **Previous Offence:** Petty Theft
-- **Previous Police Station:** Byculla Police Station
-- **Current Case Status:** `Bailed`
+- **Prior Convictions Count:** 1
+- **Previous Offence:** Contract Assassination (Supari), Shootout on Witness & Gang Assault
+- **Previous Police Station:** Kalachowki Police Station
+- **Current Case Status:** `Judicial Custody (Taloja Central Prison)`
 
 ---
 

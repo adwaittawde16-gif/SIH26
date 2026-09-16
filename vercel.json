@@ -1,6 +1,7 @@
 {
-  "buildCommand": "pnpm --filter mumbai-police-intelligence-frontend build",
-  "outputDirectory": "frontend/.next",
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
   "framework": "nextjs",
-  "installCommand": "pnpm install --frozen-lockfile"
+  "installCommand": "npm install",
+  "rootDirectory": "frontend"
 }

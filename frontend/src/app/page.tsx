@@ -8,7 +8,7 @@ import { LoadingSpinner, ErrorState } from "@/components/ui/loading";
 import { Card, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { api } from "@/lib/api";
-import { ThreatLeaderboardResponse, AlertsResponse } from "@/types";
+import { ThreatLeaderboardResponse, AlertsResponse, CrimeRingsResponse, CCTVMeetingsResponse, NocturnalAnomaliesResponse } from "@/types";
 import {
   Flame,
   Network,
@@ -31,6 +31,9 @@ import {
 export default function CommandCenterPage() {
   const [data, setData] = useState<ThreatLeaderboardResponse | null>(null);
   const [alerts, setAlerts] = useState<AlertsResponse | null>(null);
+  const [rings, setRings] = useState<CrimeRingsResponse | null>(null);
+  const [cctv, setCctv] = useState<CCTVMeetingsResponse | null>(null);
+  const [nocturnal, setNocturnal] = useState<NocturnalAnomaliesResponse | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -38,12 +41,18 @@ export default function CommandCenterPage() {
     async function loadData() {
       try {
         setLoading(true);
-        const [boardRes, alertRes] = await Promise.all([
+        const [boardRes, alertRes, ringsRes, cctvRes, noctRes] = await Promise.all([
           api.getThreatLeaderboard(),
-          api.getAlerts()
+          api.getAlerts(),
+          api.getCrimeRings(),
+          api.getCCTVMeetings(),
+          api.getNocturnalAnomalies(),
         ]);
         setData(boardRes);
         setAlerts(alertRes);
+        setRings(ringsRes);
+        setCctv(cctvRes);
+        setNocturnal(noctRes);
       } catch (err: any) {
         setError(err.message || "Failed to connect to Python FastAPI backend");
       } finally {
@@ -191,10 +200,10 @@ export default function CommandCenterPage() {
       {/* KPI Cards Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
         <KPICard label="Suspects Profiled" value={totalSuspects} accent="blue" icon={Flame} subtext="Active surveillance mesh" />
-        <KPICard label="Active Crime Rings" value="—" accent="purple" icon={Layers} subtext="Live syndicate service" />
+        <KPICard label="Active Crime Rings" value={rings?.total_rings ?? "—"} accent="purple" icon={Layers} subtext="Syndicate clusters detected" />
         <KPICard label="Critical Risk Tiers" value={criticalCount} accent="red" icon={ShieldAlert} subtext="Requires immediate warrant" />
-        <KPICard label="CCTV Encounters" value="—" accent="amber" icon={Camera} subtext="Live CCTV service" />
-        <KPICard label="Night Hotspots" value="—" accent="cyan" icon={Moon} subtext="Live nocturnal service" />
+        <KPICard label="CCTV Encounters" value={cctv?.total_encounters ?? "—"} accent="amber" icon={Camera} subtext={`${cctv?.avg_confidence_pct ?? 0}% avg match confidence`} />
+        <KPICard label="Night Hotspots" value={nocturnal?.hotspots_count ?? "—"} accent="cyan" icon={Moon} subtext={`${nocturnal?.total_anomalies ?? 0} nocturnal anomalies`} />
       </div>
 
       {/* Priority Top Suspect Alert Card */}
