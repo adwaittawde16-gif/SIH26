@@ -65,10 +65,10 @@ export default function CommandCenterPage() {
   if (loading) return <LoadingSpinner label="Connecting to Tactical Intelligence Backend..." />;
   if (error) return <ErrorState message={error} onRetry={() => window.location.reload()} />;
 
-  const topSuspect = data?.leaderboard[0];
+  const topSuspect = data?.leaderboard?.[0];
   const criticalCount = data?.critical_count ?? 0;
   const highCount = data?.high_count ?? 0;
-  const totalSuspects = data?.total_suspects ?? data?.leaderboard.length ?? 0;
+  const totalSuspects = data?.total_suspects ?? data?.leaderboard?.length ?? 0;
 
   const modules = [
     {
