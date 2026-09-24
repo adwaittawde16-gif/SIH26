@@ -1,78 +1,52 @@
-# Brihanmumbai Police — AI-Powered Criminal Network & Tactical Intelligence System (SIH 26)
+# Mumbai Police Tactical Intelligence Platform — Next.js Frontend
 
-Unified Police Tactical Intelligence Command Center combining FastAPI (Python REST API Backend) and Next.js (React Frontend).
+A modern Next.js 14 (App Router, TypeScript, Tailwind CSS, Lucide Icons) frontend for Vercel deployment, connected to the Python FastAPI backend (`api_server.py`).
 
 ---
 
-## 🚀 How to Run Locally (For Evaluators)
+## 🚀 How to Run Locally
 
-### Step 1 — Start the FastAPI Backend (Terminal 1)
-
+### 1. Start the Python FastAPI Backend (Terminal 1)
 ```bash
-# Install Python dependencies
-pip install -r requirements.txt
-
-# Start the FastAPI server (port 8002)
-python -m uvicorn app_backend.main:app --host 127.0.0.1 --port 8002 --reload
+# In the root workspace directory:
+python api_server.py
+# Or: uvicorn app_backend.main:app --port 8080 --reload
 ```
-- **Backend API**: `http://localhost:8002`
-- **Interactive Swagger Docs**: `http://localhost:8002/docs`
-- **Cryptographic Audit Verification**: `http://localhost:8002/api/audit/verify`
+The backend API server will run at `http://localhost:8080`.
+Interactive Swagger API documentation is available at `http://localhost:8080/docs`.
 
-### Step 2 — Start the Next.js Frontend (Terminal 2)
-
+### 2. Start the Next.js Frontend (Terminal 2)
 ```bash
+# Navigate to the frontend directory:
 cd frontend
+
+# Install dependencies (first time only):
 npm install
+
+# Run dev server:
 npm run dev
 ```
-- **Web Command Center**: `http://localhost:3000`
+Open `http://localhost:3000` in your browser.
 
 ---
 
-## ☁️ Production Deployment
+## 🌐 Deploying to Vercel (Step-by-Step Instructions)
 
-### Architecture
-- **Frontend** → [Vercel](https://vercel.com) (Next.js, auto-deployed from GitHub)
-- **Backend** → [Render](https://render.com) (FastAPI, full Python runtime, free tier)
+### Option A: Deploy via Vercel Dashboard (Recommended)
+1. Push your repository to **GitHub**.
+2. Log in to [Vercel](https://vercel.com) and click **"Add New" > "Project"**.
+3. Select your repository and choose `frontend` as the **Root Directory**.
+4. In the **Environment Variables** section, add:
+   - `NEXT_PUBLIC_API_URL` = `https://your-python-backend.up.railway.app` (or your backend URL on Render/Railway/Vercel Serverless).
+5. Click **Deploy**. Vercel will automatically build and publish your Next.js application!
 
-### Backend on Render
-1. Go to [render.com](https://render.com) → New → Web Service
-2. Connect your GitHub repo
-3. **Build Command:** `pip install -r requirements.txt`
-4. **Start Command:** `python -m uvicorn app_backend.main:app --host 0.0.0.0 --port $PORT`
-5. **Env Var:** `PYTHONPATH` = `.`
-6. Deploy → copy the URL (e.g., `https://police-intel-api.onrender.com`)
-
-### Frontend on Vercel
-1. Go to [vercel.com](https://vercel.com) → New Project → connect GitHub repo
-2. Set **Root Directory** to `frontend`
-3. Add **Environment Variable:** `NEXT_PUBLIC_API_URL` = `https://police-intel-api.onrender.com`
-4. Deploy → Done ✅
-
----
-
-## 🐳 Docker (Optional — Edge Command Van / Air-Gapped Deployment)
-
+### Option B: Deploy via Vercel CLI
 ```bash
-docker-compose up --build -d
-docker-compose logs -f
-docker-compose down
+# Install Vercel CLI if needed:
+npm i -g vercel
+
+# Navigate to frontend folder and run:
+cd frontend
+vercel
 ```
-
----
-
-## 🔒 Security & Cryptographic Audit Features
-
-1. **SHA-256 Tamper-Evident Audit Logging** — Every API access is recorded with a SHA-256 hash chain. Verifiable via `GET /api/audit/verify`.
-2. **Non-Root Docker Container** — Runs as unprivileged `appuser` (UID 1000).
-3. **CORS Allowlist** — Only `localhost:3000` and `*.vercel.app` origins accepted; configurable via `FRONTEND_URL` env var.
-4. **Secrets Hygiene** — All credentials loaded from `.env` via `python-dotenv`. `.env` and `*.db` files are git-ignored.
-
----
-
-## 📌 Project Architecture
-
-- **Frontend (`/frontend`)**: Next.js 16 (App Router), React 18, TypeScript, Tailwind CSS, Lucide Icons, ReactFlow (network graphs).
-- **Backend (`/app_backend`)**: FastAPI REST APIs — 18 modular routers covering CDR, CCTV, Crime Rings, Gangs, Financial/PMLA, Nocturnal Analysis, Field Surveillance, Dossiers, Social Media, NLP, Graph Analytics, AI Copilot, Streaming, and SHA-256 Audit.
-- **Intelligence Engines**: IntelligenceEngine (6-factor threat scoring), PMLAFinancialGraphEngine (1,142-line money laundering graph), MLThreatScorer (Random Forest hybrid), NetworkAnalyzer (PageRank + Betweenness), NLP Engine (IPC/BNS + Mumbai MO taxonomy), StatisticalAnomalyEngine (Z-score + Haversine).
+Follow the interactive prompts in the terminal to deploy!
